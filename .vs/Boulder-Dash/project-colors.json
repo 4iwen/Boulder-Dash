@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "660dd0c0-ac17-48b0-b70c-b144b7bebc98": {
+      "ProjectGuid": "660dd0c0-ac17-48b0-b70c-b144b7bebc98",
+      "DisplayName": "Boulder-Dash",
+      "ColorIndex": 0
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    }
+  },
+  "NextColorIndex": 1
+}
