@@ -19,3 +19,10 @@ C:\Users\Bien Lukáš\Desktop\PROGRAMKO\Boulder-Dash\Boulder-Dash\obj\Debug\net6
 C:\Users\Bien Lukáš\Desktop\PROGRAMKO\Boulder-Dash\Boulder-Dash\obj\Debug\net6.0\ref\Boulder-Dash.dll
 C:\Users\Bien Lukáš\Desktop\PROGRAMKO\Boulder-Dash\Boulder-Dash\obj\Debug\net6.0\Boulder-Dash.pdb
 C:\Users\Bien Lukáš\Desktop\PROGRAMKO\Boulder-Dash\Boulder-Dash\obj\Debug\net6.0\Boulder-Dash.genruntimeconfig.cache
+C:\Users\lukyb\Desktop\Boulder-Dash\Boulder-Dash\obj\Debug\net6.0\Boulder-Dash.csproj.AssemblyReference.cache
+C:\Users\lukyb\Desktop\Boulder-Dash\Boulder-Dash\obj\Debug\net6.0\Boulder-Dash.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\lukyb\Desktop\Boulder-Dash\Boulder-Dash\obj\Debug\net6.0\Boulder-Dash.AssemblyInfoInputs.cache
+C:\Users\lukyb\Desktop\Boulder-Dash\Boulder-Dash\obj\Debug\net6.0\Boulder-Dash.AssemblyInfo.cs
+C:\Users\lukyb\Desktop\Boulder-Dash\Boulder-Dash\obj\Debug\net6.0\Boulder-Dash.csproj.CoreCompileInputs.cache
+C:\Users\lukyb\Desktop\Boulder-Dash\Boulder-Dash\obj\Debug\net6.0\Boulder-Dash.dll
+C:\Users\lukyb\Desktop\Boulder-Dash\Boulder-Dash\obj\Debug\net6.0\Boulder-Dash.pdb

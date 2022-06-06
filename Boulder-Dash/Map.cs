@@ -15,6 +15,11 @@ internal class Map
 
     private Dictionary<TileType, Texture2D> _textures = new();
 
+    private Tile[,] tiles =
+    {
+
+    };
+
     private Tile rockford;
 
     public Map(string path) 

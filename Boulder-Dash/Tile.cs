@@ -10,10 +10,16 @@ abstract class Tile
 {
     public TileType Type { get; private set; }
 
-    public int Step { get; private set; } 
+    public int Step { get; private set; }
 
-    public Tile(TileType type, int step)
+    public Flag Flags { get; private set; }
+
+    public Tile(TileType type, Flag flags, int step)
     {
         Type = type;
+        Step = step;
+        Flags = flags;
     }
+
+    public abstract void Update();
 }

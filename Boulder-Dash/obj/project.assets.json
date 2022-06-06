@@ -119,23 +119,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Bien Lukáš\\.nuget\\packages\\": {},
-    "D:\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\lukyb\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Bien Lukáš\\Desktop\\PROGRAMKO\\Boulder-Dash\\Boulder-Dash\\Boulder-Dash.csproj",
+      "projectUniqueName": "C:\\Users\\lukyb\\Desktop\\Boulder-Dash\\Boulder-Dash\\Boulder-Dash.csproj",
       "projectName": "Boulder-Dash",
-      "projectPath": "C:\\Users\\Bien Lukáš\\Desktop\\PROGRAMKO\\Boulder-Dash\\Boulder-Dash\\Boulder-Dash.csproj",
-      "packagesPath": "C:\\Users\\Bien Lukáš\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Bien Lukáš\\Desktop\\PROGRAMKO\\Boulder-Dash\\Boulder-Dash\\obj\\",
+      "projectPath": "C:\\Users\\lukyb\\Desktop\\Boulder-Dash\\Boulder-Dash\\Boulder-Dash.csproj",
+      "packagesPath": "C:\\Users\\lukyb\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\lukyb\\Desktop\\Boulder-Dash\\Boulder-Dash\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "D:\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Bien Lukáš\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\lukyb\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -182,7 +182,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
       }
     }
   }
