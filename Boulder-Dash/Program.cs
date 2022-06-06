@@ -10,18 +10,16 @@ static class Program
         InitWindow(1280, 704 + 32, "Boulder Dash");
         SetTargetFPS(60);
 
-        Map map = new("map.txt");
-
-        System.Timers.Timer inputTimer = new System.Timers.Timer(100);
-        inputTimer.Elapsed += map.CheckInput;
-        inputTimer.Start();
+        Map map = new(path: "map.txt");
 
         while (!WindowShouldClose())
         {
             BeginDrawing();
             ClearBackground(Color.BLACK);
-            map.Update();
             DrawFPS(8, 8);
+            
+            map.Render();
+
             EndDrawing();
         }
 

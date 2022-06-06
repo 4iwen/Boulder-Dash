@@ -24,8 +24,14 @@ public enum TileType
 public enum Direction
 {
     None = 0,
-    Left,
-    Right,
-    Up,
-    Down
+
+}
+
+[Flags]
+public enum Flag
+{
+    None,
+    Rounded,
+    Solid,
+
 }

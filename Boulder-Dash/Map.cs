@@ -111,46 +111,15 @@ internal class Map
         }
     }
 
-    public void Update()
-    {
-        ApplyPhysics();
-        DrawMap();
-    }
-
-    public void CheckInput(Object source, ElapsedEventArgs e)
-    {
-        switch (Input.GetDirection())
-        {
-            default:
-                break;
-
-            case Direction.Left:
-                rockford.Step(TileMap, rockford, -1, 0);
-                break;
-            case Direction.Right:
-                rockford.Step(TileMap, rockford, 1, 0);
-                break;
-            case Direction.Up:
-                rockford.Step(TileMap, rockford, 0, -1);
-                break;
-            case Direction.Down:
-                rockford.Step(TileMap, rockford, 0, 1);
-                break;
-        }
-    }
-
-    private void ApplyPhysics()
-    {
-
-    }
-
-    private void DrawMap()
+    public void Render()
     {
         for (int y = 0; y < TileMap.GetLength(1); y++)
         {
             for (int x = 0; x < TileMap.GetLength(0); x++)
             {
-                DrawTexture(_textures[TileMap[x, y].Type], x * 32, y * 32 + 32, Color.WHITE);
+                int pxWidth = _textures[TileMap[x, y].Type].width;
+                int pxHeight = _textures[TileMap[x, y].Type].height;
+                DrawTexture(_textures[TileMap[x, y].Type], x * pxWidth, y * pxHeight + pxHeight, Color.WHITE);
             }
         }
     }
