@@ -8,7 +8,7 @@ namespace Boulder_Dash;
 
 public enum TileType
 {
-    Space = 0,
+    Space,
     Rockford,
     Dirt,
     Boulder,
@@ -23,15 +23,21 @@ public enum TileType
 
 public enum Direction
 {
-    None = 0,
-
+    None,
+    Up,
+    Down,
+    Left,
+    Right
 }
 
 [Flags]
 public enum Flag
 {
-    None,
-    Rounded,
-    Solid,
-
+    None = 0,
+    Pushable = 1,
+    CanFall = 2,
+    Explodable = 4,
+    Rounded = 8,
+    Consumable = 16,
+    Solid = 32
 }

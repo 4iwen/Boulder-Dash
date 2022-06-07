@@ -17,7 +17,8 @@ static class Program
             BeginDrawing();
             ClearBackground(Color.BLACK);
             DrawFPS(8, 8);
-            
+
+            map.Update();
             map.Render();
 
             EndDrawing();
