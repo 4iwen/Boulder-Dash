@@ -8,12 +8,12 @@ namespace Boulder_Dash.Tiles;
 
 internal class Amoeba : Tile
 {
-    public Amoeba(TileType type, Flag flags, int step) : base(type, flags, step)
+    public Amoeba(TileType type, Flag flags, int step, int x, int y) : base(type, flags, step, x, y)
     {
 
     }
 
-    public override void Update()
+    public override void Update(int currentTick, Map map)
     {
 
     }

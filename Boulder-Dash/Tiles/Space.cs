@@ -8,12 +8,12 @@ namespace Boulder_Dash.Tiles;
 
 internal class Space : Tile
 {
-    public Space(TileType type, Flag flags, int step) : base(type, flags, step)
+    public Space(TileType type, Flag flags, int step, int x, int y) : base(type, flags, step, x, y)
     {
 
     }
 
-    public override void Update()
+    public override void Update(int currentTick, Map map)
     {
 
     }

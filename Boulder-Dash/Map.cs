@@ -12,69 +12,34 @@ namespace Boulder_Dash;
 
 internal class Map
 {
-    public Tile[,] TileMap { get; private set; }
+    public int TotalDiamonds, CollectedDiamonds;
+    public Tile[,] TileMap;
 
-    private Dictionary<TileType, Texture2D> _textures = new();
+    private readonly Dictionary<TileType, Texture2D> _textures = new();
 
-    private Dictionary<TileType, Tile> tiles = new()
+    public void Update(int currentTick)
     {
+        for (int x = 0; x < TileMap.GetLength(0); x++)
         {
-            TileType.Space,
-            new Space(TileType.Space, Flag.None, 1)
-        },
-        {
-            TileType.Rockford,
-            new Rockford(TileType.Rockford, Flag.Explodable, 5)
-        },
-        {
-            TileType.TitaniumWall,
-            new Rockford(TileType.TitaniumWall, Flag.Solid, 1)
-        },
-        {
-            TileType.Wall,
-            new Rockford(TileType.Wall, Flag.Explodable | Flag.Solid, 1)
-        },
-        {
-            TileType.Exit,
-            new Rockford(TileType.Exit, Flag.Solid | Flag.Consumable, 1)
-        },
-        {
-            TileType.Dirt,
-            new Rockford(TileType.Dirt, Flag.Consumable | Flag.Explodable | Flag.Solid, 1)
-        },
-        {
-            TileType.Boulder,
-            new Rockford(TileType.Boulder, Flag.Solid | Flag.Pushable | Flag.CanFall | Flag.Rounded, 10) 
-        },
-        {
-            TileType.Diamond,
-            new Rockford(TileType.Diamond, Flag.Solid | Flag.Consumable | Flag.Rounded | Flag.CanFall, 10)
-        },
-        {
-            TileType.Amoeba,
-            new Rockford(TileType.Amoeba, Flag.Solid, 60)
-        },
-        {
-            TileType.Firefly,
-            new Rockford(TileType.Firefly, Flag.Explodable, 5)
-        },
-        {
-            TileType.Butterfly,
-            new Rockford(TileType.Butterfly, Flag.Explodable, 5)
+            for (int y = 0; y < TileMap.GetLength(1); y++)
+            {
+                TileMap[x, y].MovedThisTick = false;
+            }
         }
-    };
 
-    private Tile rockford;
-
-    private void Update()
-    {
-
+        for (int y = TileMap.GetLength(1) - 1; y >= 0; y--)
+        {
+            for (int x = TileMap.GetLength(0) - 1; x >= 0; x--)
+            {
+                TileMap[x, y].Update(currentTick, this);
+            }
+        }
     }
 
-    public Map(string path) 
+    public Map(string path)
     {
         LoadTextures();
-        LoadMapFromFile(path); 
+        LoadMapFromFile(path);
     }
 
     private void LoadTextures()
@@ -94,8 +59,6 @@ internal class Map
 
     public void LoadMapFromFile(string path)
     {
-        int rockfordCount = 0, exitCount = 0;
-
         using StreamReader sr = new(path);
 
         string input = sr.ReadToEnd();
@@ -104,65 +67,59 @@ internal class Map
 
         TileMap = new Tile[lines[0].Length, lines.Length];
 
+        int diamonds = 0;
+
         for (int line = 0; line < lines.Length; line++)
         {
             for (int character = 0; character < lines[line].Length; character++)
             {
                 Tile tile;
 
-                switch (lines[line][character])
+                switch(lines[line][character]) 
                 {
+
                     default:
-                        tile = tiles[TileType.Space];
+                        tile = new Space(TileType.Space, Flag.None, 1, character, line);
                         break;
 
                     case 'R':
-                        tile = tiles[TileType.Rockford];
-                        rockford = tile;
-                        rockfordCount++;
+                        tile = new Rockford(TileType.Rockford, Flag.Explodable, 6, character, line);
                         break;
-
                     case 'd':
-                        tile = tiles[TileType.Dirt];
+                        tile = new Dirt(TileType.Dirt, Flag.Consumable | Flag.Explodable, 1, character, line);
                         break;
-
-                    case 'D':
-                        tile = tiles[TileType.Diamond];
+                    case 'D': 
+                        tile = new Diamond(TileType.Diamond, Flag.Consumable | Flag.Rounded | Flag.CanFall, 10, character, line);
+                        diamonds++;
                         break;
-
-                    case 'b':
-                        tile = tiles[TileType.Boulder];
+                    case 'b': 
+                        tile = new Boulder(TileType.Boulder, Flag.Solid | Flag.Pushable | Flag.CanFall | Flag.Rounded, 10, character, line);
                         break;
-
-                    case 'W':
-                        tile = tiles[TileType.Wall];
+                    case 'W': 
+                        tile = new Wall(TileType.Wall, Flag.Explodable | Flag.Solid, 1, character, line);
                         break;
-
                     case 'T':
-                        tile = tiles[TileType.TitaniumWall];
+                        tile = new TitaniumWall(TileType.TitaniumWall, Flag.Solid, 1, character, line);
                         break;
-
                     case 'F':
-                        tile = tiles[TileType.Firefly];
+                        tile = new Firefly(TileType.Firefly, Flag.Explodable, 5, character, line);
                         break;
-
-                    case 'B':
-                        tile = tiles[TileType.Butterfly];
+                    case 'B': 
+                        tile = new Butterfly(TileType.Butterfly, Flag.Explodable, 5, character, line);
                         break;
-
                     case 'A':
-                        tile = tiles[TileType.Amoeba];
+                        tile = new Amoeba(TileType.Amoeba, Flag.Solid, 60, character, line);
                         break;
-
-                    case 'E':
-                        tile = tiles[TileType.Exit];
-                        exitCount++;
+                    case 'E': 
+                        tile = new Exit(TileType.Exit, Flag.Solid | Flag.Consumable, 1, character, line);
                         break;
                 }
 
                 TileMap[character, line] = tile;
             }
         }
+
+        TotalDiamonds = diamonds;
     }
 
     public void Render()
