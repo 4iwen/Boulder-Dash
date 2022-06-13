@@ -33,6 +33,7 @@ internal class Rockford : Tile
         if (direction == (0, 0))
             return;
 
+        /*
         Console.WriteLine(
             $"Rockford:\n" +
             $" Last position:\n" +
@@ -42,6 +43,7 @@ internal class Rockford : Tile
             $"  X:{X + direction.x}\n" +
             $"  Y:{Y + direction.y}"
             );
+        */
 
         if (X + direction.x >= 0 &&
             X + direction.x < map.TileMap.GetLength(0) &&

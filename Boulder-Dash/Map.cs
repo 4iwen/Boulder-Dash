@@ -77,7 +77,6 @@ internal class Map
 
                 switch(lines[line][character]) 
                 {
-
                     default:
                         tile = new Space(TileType.Space, Flag.None, 1, character, line);
                         break;
@@ -108,7 +107,7 @@ internal class Map
                         tile = new Butterfly(TileType.Butterfly, Flag.Explodable, 5, character, line);
                         break;
                     case 'A':
-                        tile = new Amoeba(TileType.Amoeba, Flag.Solid, 60, character, line);
+                        tile = new Amoeba(TileType.Amoeba, Flag.Solid, 120, character, line);
                         break;
                     case 'E': 
                         tile = new Exit(TileType.Exit, Flag.Solid | Flag.Consumable, 1, character, line);
