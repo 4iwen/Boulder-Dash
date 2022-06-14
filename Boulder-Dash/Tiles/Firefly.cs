@@ -35,6 +35,8 @@ internal class Firefly : Tile
             }
             else
             {
+                int dir = 1;
+
                 if (dir == 1)
                 {
                     if (map.TileMap[X + 1, Y].Type == TileType.Space &&
