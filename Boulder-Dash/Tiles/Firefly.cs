@@ -35,8 +35,6 @@ internal class Firefly : Tile
             }
             else
             {
-                //int dir = r.Next(0, 2); // generate random falling direction
-                int dir = 1;
                 if (dir == 1)
                 {
                     if (map.TileMap[X + 1, Y].Type == TileType.Space &&
