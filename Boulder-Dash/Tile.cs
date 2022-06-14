@@ -25,4 +25,13 @@ abstract class Tile
     }
 
     public abstract void Update(int currentTick, Map map);
+
+    public override string ToString()
+    {
+        return
+            $"{Type}\n" +
+            $" Step: {Step}\n" +
+            $" Flags: {Flags}\n" +
+            $" X: {X}, Y: {Y}";
+    }
 }

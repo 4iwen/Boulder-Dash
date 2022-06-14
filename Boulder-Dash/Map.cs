@@ -31,6 +31,7 @@ internal class Map
         {
             for (int x = TileMap.GetLength(0) - 1; x >= 0; x--)
             {
+                //Console.WriteLine(TileMap[x, y].ToString());
                 TileMap[x, y].Update(currentTick, this);
             }
         }
@@ -68,6 +69,8 @@ internal class Map
         TileMap = new Tile[lines[0].Length, lines.Length];
 
         int diamonds = 0;
+
+        SetWindowSize(lines[0].Length * 32, (lines.Length * 32) + 32);
 
         for (int line = 0; line < lines.Length; line++)
         {

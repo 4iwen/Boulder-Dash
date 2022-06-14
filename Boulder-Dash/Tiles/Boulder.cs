@@ -26,13 +26,13 @@ internal class Boulder : Tile
             return;
 
         if (X - 1 >= 0 &&
-        X + 1 < map.TileMap.GetLength(0) &&
-        Y - 1 >= 0 &&
-        Y + 1 < map.TileMap.GetLength(1))
+            X + 1 < map.TileMap.GetLength(0) &&
+            Y - 1 >= 0 &&
+            Y + 1 < map.TileMap.GetLength(1))
         {
             if (map.TileMap[X, Y + 1].Type == TileType.Rockford && Falling)
             {
-                Environment.Exit(0);
+                Console.WriteLine("Died, reason: " + Type + ", tick: " + currentTick);
             }
             else if (map.TileMap[X, Y + 1].Type == TileType.Space)
             {
@@ -89,8 +89,6 @@ internal class Boulder : Tile
                     }
                 }
             }
-
-
         }
     }
 }

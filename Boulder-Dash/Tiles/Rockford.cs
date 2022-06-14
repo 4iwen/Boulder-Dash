@@ -33,18 +33,6 @@ internal class Rockford : Tile
         if (direction == (0, 0))
             return;
 
-        /*
-        Console.WriteLine(
-            $"Rockford:\n" +
-            $" Last position:\n" +
-            $"  X:{X}\n" +
-            $"  Y:{Y}\n" +
-            $" Moving to:\n" +
-            $"  X:{X + direction.x}\n" +
-            $"  Y:{Y + direction.y}"
-            );
-        */
-
         if (X + direction.x >= 0 &&
             X + direction.x < map.TileMap.GetLength(0) &&
             Y + direction.y >= 0 &&
@@ -52,7 +40,7 @@ internal class Rockford : Tile
         {
 
             if (map.TileMap[X + direction.x, Y + direction.y].Type == TileType.Exit && map.CollectedDiamonds == map.TotalDiamonds)
-                return;
+                Console.WriteLine("Exited, tick:" + currentTick);
 
             if ((map.TileMap[X + direction.x, Y + direction.y].Flags & Flag.Consumable) != 0 && map.TileMap[X + direction.x, Y + direction.y].Type == TileType.Diamond)
                 map.CollectedDiamonds++;
