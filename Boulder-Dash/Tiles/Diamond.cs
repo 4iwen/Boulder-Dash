@@ -12,6 +12,7 @@ internal class Diamond : Tile
     Random r = new();
 
     public bool Falling = false;
+
     public Diamond(TileType type, Flag flags, int step, int x, int y) : base(type, flags, step, x, y)
     {
 
@@ -32,12 +33,12 @@ internal class Diamond : Tile
         {
             if (map.TileMap[X, Y + 1].Type == TileType.Rockford && Falling)
             {
-                Console.WriteLine("Died, reason: " + Type + ", tick: " + currentTick);
+                Program.EndGame(Type);
             }
             else if (map.TileMap[X, Y + 1].Type == TileType.Space)
             {
                 map.TileMap[X, Y + 1] = map.TileMap[X, Y];
-                map.TileMap[X, Y] = new Space(TileType.Space, Flag.None, 1, X, Y);
+                map.TileMap[X, Y] = new Space(TileType.Space, Flag.Explodable, 1, X, Y);
                 Y++;
                 MovedThisTick = true;
                 Falling = true;
@@ -53,7 +54,7 @@ internal class Diamond : Tile
                        map.TileMap[X + 1, Y + 1].Type == TileType.Space)
                     {
                         map.TileMap[X + 1, Y] = map.TileMap[X, Y];
-                        map.TileMap[X, Y] = new Space(TileType.Space, Flag.None, 1, X, Y);
+                        map.TileMap[X, Y] = new Space(TileType.Space, Flag.Explodable, 1, X, Y);
                         X++;
                         MovedThisTick = true;
                     }
@@ -62,7 +63,7 @@ internal class Diamond : Tile
                             map.TileMap[X - 1, Y + 1].Type == TileType.Space)
                     {
                         map.TileMap[X - 1, Y] = map.TileMap[X, Y];
-                        map.TileMap[X, Y] = new Space(TileType.Space, Flag.None, 1, X, Y);
+                        map.TileMap[X, Y] = new Space(TileType.Space, Flag.Explodable, 1, X, Y);
                         X--;
                         MovedThisTick = true;
                     }
@@ -74,7 +75,7 @@ internal class Diamond : Tile
                        map.TileMap[X - 1, Y + 1].Type == TileType.Space)
                     {
                         map.TileMap[X - 1, Y] = map.TileMap[X, Y];
-                        map.TileMap[X, Y] = new Space(TileType.Space, Flag.None, 1, X, Y);
+                        map.TileMap[X, Y] = new Space(TileType.Space, Flag.Explodable, 1, X, Y);
                         X--;
                         MovedThisTick = true;
                     }
@@ -83,7 +84,7 @@ internal class Diamond : Tile
                             map.TileMap[X + 1, Y + 1].Type == TileType.Space)
                     {
                         map.TileMap[X + 1, Y] = map.TileMap[X, Y];
-                        map.TileMap[X, Y] = new Space(TileType.Space, Flag.None, 1, X, Y);
+                        map.TileMap[X, Y] = new Space(TileType.Space, Flag.Explodable, 1, X, Y);
                         X++;
                         MovedThisTick = true;
                     }

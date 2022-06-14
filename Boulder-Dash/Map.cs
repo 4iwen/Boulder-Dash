@@ -14,6 +14,7 @@ internal class Map
 {
     public int TotalDiamonds, CollectedDiamonds;
     public Tile[,] TileMap;
+    public int TotalAmoeba = 0;
 
     private readonly Dictionary<TileType, Texture2D> _textures = new();
 
@@ -33,6 +34,16 @@ internal class Map
             {
                 //Console.WriteLine(TileMap[x, y].ToString());
                 TileMap[x, y].Update(currentTick, this);
+            }
+        }
+
+        for (int y = TileMap.GetLength(1) - 1; y >= 0; y--)
+        {
+            for (int x = TileMap.GetLength(0) - 1; x >= 0; x--)
+            {
+                if (TotalAmoeba >= 50)
+                    if (TileMap[x, y].Type == TileType.Amoeba)
+                        TileMap[x, y] = new Boulder(TileType.Boulder, Flag.Solid | Flag.Pushable | Flag.CanFall | Flag.Rounded, 10, x, y);
             }
         }
     }
@@ -81,7 +92,7 @@ internal class Map
                 switch(lines[line][character]) 
                 {
                     default:
-                        tile = new Space(TileType.Space, Flag.None, 1, character, line);
+                        tile = new Space(TileType.Space, Flag.Explodable, 1, character, line);
                         break;
 
                     case 'R':
@@ -104,13 +115,14 @@ internal class Map
                         tile = new TitaniumWall(TileType.TitaniumWall, Flag.Solid, 1, character, line);
                         break;
                     case 'F':
-                        tile = new Firefly(TileType.Firefly, Flag.Explodable, 5, character, line);
+                        tile = new Firefly(TileType.Firefly, Flag.Solid, 8, character, line);
                         break;
                     case 'B': 
-                        tile = new Butterfly(TileType.Butterfly, Flag.Explodable, 5, character, line);
+                        tile = new Butterfly(TileType.Butterfly, Flag.Solid, 8, character, line);
                         break;
                     case 'A':
-                        tile = new Amoeba(TileType.Amoeba, Flag.Solid, 120, character, line);
+                        tile = new Amoeba(TileType.Amoeba, Flag.Solid, 200, character, line);
+                        TotalAmoeba++;
                         break;
                     case 'E': 
                         tile = new Exit(TileType.Exit, Flag.Solid | Flag.Consumable, 1, character, line);

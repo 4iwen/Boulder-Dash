@@ -39,17 +39,23 @@ internal class Rockford : Tile
             Y + direction.y < map.TileMap.GetLength(1))
         {
 
-            if (map.TileMap[X + direction.x, Y + direction.y].Type == TileType.Exit && map.CollectedDiamonds == map.TotalDiamonds)
-                Console.WriteLine("Exited, tick:" + currentTick);
+            if (map.TileMap[X + direction.x, Y + direction.y].Type == TileType.Exit && map.CollectedDiamonds >= map.TotalDiamonds)
+                Program.EndGame(Type, false);
 
             if ((map.TileMap[X + direction.x, Y + direction.y].Flags & Flag.Consumable) != 0 && map.TileMap[X + direction.x, Y + direction.y].Type == TileType.Diamond)
                 map.CollectedDiamonds++;
+
+            if ((map.TileMap[X + direction.x, Y + direction.y].Flags & Flag.Pushable) != 0 && map.TileMap[X + direction.x, Y + direction.y].Type == TileType.Boulder)
+            {
+                Boulder tile = map.TileMap[X + direction.x, Y + direction.y] as Boulder;
+                tile.Push(map, direction.x, direction.y); 
+            }
 
             if ((map.TileMap[X + direction.x, Y + direction.y].Flags & Flag.Solid) != 0)
                 return;
              
             map.TileMap[X + direction.x, Y + direction.y] = map.TileMap[X, Y];
-            map.TileMap[X, Y] = new Space(TileType.Space, Flag.None, 1, X, Y);
+            map.TileMap[X, Y] = new Space(TileType.Space, Flag.Explodable, 1, X, Y);
             X += direction.x;
             Y += direction.y;
             MovedThisTick = true;
